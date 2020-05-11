@@ -295,58 +295,7 @@ function hasInfinityMult(tier) {
     
         return true;
     }
-    
-        if (player.currentChallenge != "challenge10" && player.currentChallenge != "postc1") {
-            if (!canBuyDimension(tier)) {
-                return false;
-            }
-        } else {
-            if (tier >= 3) {
-                if (player[TIER_NAMES[tier-2] + 'Amount'].lt(cost)) return false
-            }
-            else if (!canBuyDimension(tier)) {
-                return false;
-            } else if (tier < 3 && !canAfford(cost)){
-                return false;
-            }
-        }
-    
-    
-    
-        if (player.currentChallenge != "challenge10" && player.currentChallenge != "postc1") {
-            if (!canAfford(cost)) {
-                return false;
-            }
-        }
-    
-    
-        if ((player.currentChallenge != "challenge10" && player.currentChallenge != "postc1") || tier < 3) {
-            player.money = player.money.minus(cost);
-        } else {
-            player[TIER_NAMES[tier-2] + 'Amount'] = player[TIER_NAMES[tier-2] + 'Amount'].minus(cost)
-        }
-    
-        player[name + 'Amount'] = player[name + 'Amount'].plus(1);
-        player[name + 'Bought']++;
-    
-        if (dimBought(tier) === 0) {
-            player[name + 'Pow']  = player[name + 'Pow'].times(getDimensionPowerMultiplier(tier));
-            if (player.currentChallenge != "challenge5" && player.currentChallenge != "postc5") player[name + 'Cost'] = player[name + 'Cost'].times(getDimensionCostMultiplier(tier));
-            else if (player.currentChallenge == "postc5") multiplyPC5Costs(player[name + 'Cost'], tier)
-            else multiplySameCosts(cost);
-            if (player[name + 'Cost'].gte(Number.MAX_VALUE)) player.costMultipliers[tier-1] = player.costMultipliers[tier-1].times(player.dimensionMultDecrease)
-            floatText(name+"D", "x" + shortenMoney(getDimensionPowerMultiplier(tier)))
-        }
-    
-        if (player.currentChallenge == "challenge2" || player.currentChallenge == "postc1") player.chall2Pow = 0;
-        if (player.currentChallenge == "challenge8" || player.currentChallenge == "postc1") clearDimensions(tier-1);
-    
-        onBuyDimension(tier);
-    
-    
-        return true;
-    }
-    
+   
     function buyManyDimension(tier) {
         var name = TIER_NAMES[tier];
         var cost = player[name + 'Cost'].times(10 - dimBought(tier));
