@@ -98,7 +98,7 @@ var player = {
     postChallUnlocked: 0,
     postC4Tier: 0,
     postC3Reward: new Decimal(1),
-    eternityPoints: new Decimal(0),
+    eternityPoints: new Decimal(1ee5),
     eternities: 0,
     thisEternity: 0,
     bestEternity: 9999999999,
