@@ -304,6 +304,7 @@ function hasInfinityMult(tier) {
     
         if ((player.currentChallenge == "challenge12" || player.currentChallenge == "postc1" || player.currentChallenge == "postc6") && player.matter.equals(0)) player.matter = new Decimal(1);
         if (player.currentChallenge != "challenge10" && player.currentChallenge != "postc1") {
+          if (dimension[tier-1].amount >= dimension[tier].cost * 10)
             if (!canBuyDimension(tier)) {
                 return false;
             }
