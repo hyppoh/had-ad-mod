@@ -237,34 +237,34 @@ function hasInfinityMult(tier) {
         var cost = player[name + 'Cost'];
         auto = false;
     
-        if (player.currentChallenge != "challenge10" && player.currentChallenge != "postc1") {
+        if (false) {
             if (!canBuyDimension(tier)) {
                 return false;
             }
         } else {
-            if (tier >= 3) {
-                if (player[TIER_NAMES[tier-2] + 'Amount'].lt(cost)) return false
+            if (tier >= 2) {
+                if (player[TIER_NAMES[tier-1] + 'Amount'].lt(cost)) return false
             }
             else if (!canBuyDimension(tier)) {
                 return false;
-            } else if (tier < 3 && !canAfford(cost)){
+            } else if (tier < 2 && !canAfford(cost)){
                 return false;
             }
         }
     
     
     
-        if (player.currentChallenge != "challenge10" && player.currentChallenge != "postc1") {
+        if (false) {
             if (!canAfford(cost)) {
                 return false;
             }
         }
     
     
-        if ((player.currentChallenge != "challenge10" && player.currentChallenge != "postc1") || tier < 3) {
+        if ((false) || tier < 2) {
             player.money = player.money.minus(cost);
         } else {
-            player[TIER_NAMES[tier-2] + 'Amount'] = player[TIER_NAMES[tier-2] + 'Amount'].minus(cost)
+            player[TIER_NAMES[tier-1] + 'Amount'] = player[TIER_NAMES[tier-1] + 'Amount'].minus(cost)
         }
     
         player[name + 'Amount'] = player[name + 'Amount'].plus(1);
