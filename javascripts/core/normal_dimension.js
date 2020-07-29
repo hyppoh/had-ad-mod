@@ -295,34 +295,34 @@ function hasInfinityMult(tier) {
         auto = false;
     
         if ((player.currentChallenge == "challenge12" || player.currentChallenge == "postc1" || player.currentChallenge == "postc6") && player.matter.equals(0)) player.matter = new Decimal(1);
-        if (player.currentChallenge != "challenge10" && player.currentChallenge != "postc1") {
+        if (false) {
             if (!canBuyDimension(tier)) {
                 return false;
             }
         } else {
-            if (tier >= 3) {
+            if (tier >= 2) {
                 if (!canBuyDimension(tier)) return false
-                if (player[TIER_NAMES[tier-2] + 'Amount'].lt(cost)) return false
+                if (player[TIER_NAMES[tier-1] + 'Amount'].lt(cost)) return false
             }
             else if (!canBuyDimension(tier)) {
                 return false;
-            } else if (tier < 3 && !canAfford(cost)){
+            } else if (tier < 2 && !canAfford(cost)){
                 return false;
             }
         }
     
     
     
-        if (player.currentChallenge != "challenge10" && player.currentChallenge != "postc1") {
+        if (false) {
             if (!canAfford(cost)) {
                 return false;
             }
         }
     
-        if ((player.currentChallenge != "challenge10" && player.currentChallenge != "postc1") || tier < 3) {
+        if ((false) || tier < 2) {
             player.money = player.money.minus(cost);
         } else {
-            player[TIER_NAMES[tier-2] + 'Amount'] = player[TIER_NAMES[tier-2] + 'Amount'].minus(cost)
+            player[TIER_NAMES[tier-1] + 'Amount'] = player[TIER_NAMES[tier-1] + 'Amount'].minus(cost)
         }
     
         player[name + 'Amount'] = player[name + 'Amount'].plus(10 - dimBought(tier));
@@ -349,20 +349,20 @@ function hasInfinityMult(tier) {
         var cost = player[name + 'Cost'].times(10 - dimBought(tier))
         if (!player.break && player.money.gt(Number.MAX_VALUE)) return false;
 
-        if (tier >= 3 && (player.currentChallenge == "challenge10" || player.currentChallenge == "postc1")) {
+        if (tier >= 2 && (player.currentChallenge == "challenge10" || player.currentChallenge == "postc1")) {
             if (!canBuyDimension(tier)) return false
-            if (player[TIER_NAMES[tier-2] + 'Amount'].lt(cost)) return false
+            if (player[TIER_NAMES[tier-1] + 'Amount'].lt(cost)) return false
                 if (canBuyDimension(tier)) {
-                    if (cost.lt(player[TIER_NAMES[tier-2]+"Amount"]) && dimBought(tier) != 0) {
-                        player[TIER_NAMES[tier-2]+"Amount"] = player[TIER_NAMES[tier-2]+"Amount"].minus(cost)
+                    if (cost.lt(player[TIER_NAMES[tier-1]+"Amount"]) && dimBought(tier) != 0) {
+                        player[TIER_NAMES[tier-1]+"Amount"] = player[TIER_NAMES[tier-1]+"Amount"].minus(cost)
                         player[name + "Amount"] = Decimal.round(player[name + "Amount"].plus(10 - dimBought(tier)))
                         player[name + 'Bought'] += (10 - dimBought(tier));
                         player[name + 'Pow']  = player[name + 'Pow'].times(getDimensionPowerMultiplier(tier))
                         player[name + "Cost"] = player[name + "Cost"].times(getDimensionCostMultiplier(tier))
                     }
                     var x = bulk
-                    while (player[TIER_NAMES[tier-2]+"Amount"].gt(player[name + "Cost"].times(10)) && x > 0) {
-                        player[TIER_NAMES[tier-2]+"Amount"] = player[TIER_NAMES[tier-2]+"Amount"].minus(player[name + "Cost"].times(10))
+                    while (player[TIER_NAMES[tier-1]+"Amount"].gt(player[name + "Cost"].times(10)) && x > 0) {
+                        player[TIER_NAMES[tier-1]+"Amount"] = player[TIER_NAMES[tier-1]+"Amount"].minus(player[name + "Cost"].times(10))
                         player[name + "Cost"] = player[name + "Cost"].times(getDimensionCostMultiplier(tier))
                         player[name + "Amount"] = Decimal.round(player[name + "Amount"].plus(10))
                         player[name + 'Bought'] += 10
