@@ -20,13 +20,13 @@ var player = {
     tickSpeedCost: new Decimal(1000),
     tickspeed: new Decimal(1000),
     firstCost: new Decimal(10),
-    secondCost: new Decimal(100),
-    thirdCost: new Decimal(10000),
-    fourthCost: new Decimal(1000000),
-    fifthCost: new Decimal(1e9),
-    sixthCost: new Decimal(1e13),
-    seventhCost: new Decimal(1e18),
-    eightCost: new Decimal(1e24),
+    secondCost: new Decimal(10),
+    thirdCost: new Decimal(10),
+    fourthCost: new Decimal(10),
+    fifthCost: new Decimal(10),
+    sixthCost: new Decimal(10),
+    seventhCost: new Decimal(10),
+    eightCost: new Decimal(10),
     firstAmount: new Decimal(0),
     secondAmount: new Decimal(0),
     thirdAmount: new Decimal(0),
@@ -874,19 +874,19 @@ document.getElementById("maxall").onclick = function () {
         var name = TIER_NAMES[tier];
         var cost = player[name + 'Cost'].times(10 - dimBought(tier))
         var multBefore = player[name + 'Pow']
-        if (tier >= 3 && (player.currentChallenge == "challenge10" || player.currentChallenge == "postc1")) {
+        if (tier >= 2 && (false)) {
             if (!canBuyDimension(tier)) continue
-            if (player[TIER_NAMES[tier-2] + 'Amount'].lt(cost)) continue
+            if (player[TIER_NAMES[tier-1] + 'Amount'].lt(cost)) continue
                 if (canBuyDimension(tier)) {
-                    if (cost.lt(player[TIER_NAMES[tier-2]+"Amount"]) && dimBought(tier) != 0) {
-                        player[TIER_NAMES[tier-2]+"Amount"] = player[TIER_NAMES[tier-2]+"Amount"].minus(cost)
+                    if (cost.lt(player[TIER_NAMES[tier-1]+"Amount"]) && dimBought(tier) != 0) {
+                        player[TIER_NAMES[tier-2]+"Amount"] = player[TIER_NAMES[tier-1]+"Amount"].minus(cost)
                         player[name + "Amount"] = Decimal.round(player[name + "Amount"].plus(10 - dimBought(tier)))
                         player[name + 'Bought'] += (10 - dimBought(tier));
                         player[name + 'Pow']  = player[name + 'Pow'].times(getDimensionPowerMultiplier(tier))
                         player[name + "Cost"] = player[name + "Cost"].times(getDimensionCostMultiplier(tier))
                     }
-                    while (player[TIER_NAMES[tier-2]+"Amount"].gt(player[name + "Cost"].times(10))) {
-                        player[TIER_NAMES[tier-2]+"Amount"] = player[TIER_NAMES[tier-2]+"Amount"].minus(player[name + "Cost"].times(10))
+                    while (player[TIER_NAMES[tier-1]+"Amount"].gt(player[name + "Cost"].times(10))) {
+                        player[TIER_NAMES[tier-1]+"Amount"] = player[TIER_NAMES[tier-1]+"Amount"].minus(player[name + "Cost"].times(10))
                         player[name + "Cost"] = player[name + "Cost"].times(getDimensionCostMultiplier(tier))
                         player[name + "Amount"] = Decimal.round(player[name + "Amount"].plus(10))
                         player[name + 'Bought'] += 10
@@ -1602,13 +1602,13 @@ function galaxyReset() {
         tickSpeedCost: new Decimal(1000),
         tickspeed: new Decimal(1000),
         firstCost: new Decimal(10),
-        secondCost: new Decimal(100),
-        thirdCost: new Decimal(10000),
-        fourthCost: new Decimal(1000000),
-        fifthCost: new Decimal(1e9),
-        sixthCost: new Decimal(1e13),
-        seventhCost: new Decimal(1e18),
-        eightCost: new Decimal(1e24),
+        secondCost: new Decimal(10),
+        thirdCost: new Decimal(100),
+        fourthCost: new Decimal(10),
+        fifthCost: new Decimal(10),
+        sixthCost: new Decimal(10),
+        seventhCost: new Decimal(10),
+        eightCost: new Decimal(10),
         firstAmount: new Decimal(0),
         secondAmount: new Decimal(0),
         thirdAmount: new Decimal(0),
@@ -2138,13 +2138,13 @@ function resetDimensions() {
         player[tiers[i] + "Pow"] = new Decimal(1)
     }
     player.firstCost = new Decimal(10)
-    player.secondCost = new Decimal(100)
-    player.thirdCost = new Decimal(10000)
-    player.fourthCost = new Decimal(1e6)
-    player.fifthCost = new Decimal(1e9)
-    player.sixthCost = new Decimal(1e13)
-    player.seventhCost = new Decimal(1e18)
-    player.eightCost = new Decimal(1e24)
+    player.secondCost = new Decimal(10)
+    player.thirdCost = new Decimal(10)
+    player.fourthCost = new Decimal(10)
+    player.fifthCost = new Decimal(10)
+    player.sixthCost = new Decimal(10)
+    player.seventhCost = new Decimal(10)
+    player.eightCost = new Decimal(10)
     player.eightPow = new Decimal(player.chall11Pow)
 }
 
@@ -2828,13 +2828,13 @@ document.getElementById("bigcrunch").onclick = function () {
             tickSpeedCost: new Decimal(1000),
             tickspeed: new Decimal(1000),
             firstCost: new Decimal(10),
-            secondCost: new Decimal(100),
-            thirdCost: new Decimal(10000),
-            fourthCost: new Decimal(1000000),
-            fifthCost: new Decimal(1e9),
-            sixthCost: new Decimal(1e13),
-            seventhCost: new Decimal(1e18),
-            eightCost: new Decimal(1e24),
+            secondCost: new Decimal(10),
+            thirdCost: new Decimal(10),
+            fourthCost: new Decimal(10),
+            fifthCost: new Decimal(10),
+            sixthCost: new Decimal(10),
+            seventhCost: new Decimal(10),
+            eightCost: new Decimal(10),
             firstAmount: new Decimal(0),
             secondAmount: new Decimal(0),
             thirdAmount: new Decimal(0),
@@ -3125,13 +3125,13 @@ function eternity(force, auto) {
             tickSpeedCost: new Decimal(1000),
             tickspeed: new Decimal(1000),
             firstCost: new Decimal(10),
-            secondCost: new Decimal(100),
-            thirdCost: new Decimal(10000),
-            fourthCost: new Decimal(1000000),
-            fifthCost: new Decimal(1e9),
-            sixthCost: new Decimal(1e13),
-            seventhCost: new Decimal(1e18),
-            eightCost: new Decimal(1e24),
+            secondCost: new Decimal(10),
+            thirdCost: new Decimal(10),
+            fourthCost: new Decimal(10),
+            fifthCost: new Decimal(10),
+            sixthCost: new Decimal(10),
+            seventhCost: new Decimal(10),
+            eightCost: new Decimal(10),
             firstAmount: new Decimal(0),
             secondAmount: new Decimal(0),
             thirdAmount: new Decimal(0),
@@ -3436,13 +3436,13 @@ function startChallenge(name, target) {
         tickSpeedCost: new Decimal(1000),
         tickspeed: new Decimal(1000),
         firstCost: new Decimal(10),
-        secondCost: new Decimal(100),
-        thirdCost: new Decimal(10000),
-        fourthCost: new Decimal(1000000),
-        fifthCost: new Decimal(1e9),
-        sixthCost: new Decimal(1e13),
-        seventhCost: new Decimal(1e18),
-        eightCost: new Decimal(1e24),
+        secondCost: new Decimal(10),
+        thirdCost: new Decimal(10),
+        fourthCost: new Decimal(10),
+        fifthCost: new Decimal(10),
+        sixthCost: new Decimal(10),
+        seventhCost: new Decimal(10),
+        eightCost: new Decimal(10),
         firstAmount: new Decimal(0),
         secondAmount: new Decimal(0),
         thirdAmount: new Decimal(0),
@@ -3925,13 +3925,13 @@ function startEternityChallenge(name, startgoal, goalIncrease) {
             tickSpeedCost: new Decimal(1000),
             tickspeed: new Decimal(1000),
             firstCost: new Decimal(10),
-            secondCost: new Decimal(100),
-            thirdCost: new Decimal(10000),
-            fourthCost: new Decimal(1000000),
-            fifthCost: new Decimal(1e9),
-            sixthCost: new Decimal(1e13),
-            seventhCost: new Decimal(1e18),
-            eightCost: new Decimal(1e24),
+            secondCost: new Decimal(10),
+            thirdCost: new Decimal(10),
+            fourthCost: new Decimal(10),
+            fifthCost: new Decimal(10),
+            sixthCost: new Decimal(10),
+            seventhCost: new Decimal(10),
+            eightCost: new Decimal(10),
             firstAmount: new Decimal(0),
             secondAmount: new Decimal(0),
             thirdAmount: new Decimal(0),
