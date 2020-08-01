@@ -1,6 +1,6 @@
 const allAchievements = {
   r11 : "You gotta start somewhere",
-  r12 : "100 antimatter is a lot",
+  r12 : "10 First Dimensions is a price to pay",
   r13 : "Half life 3 confirmed",
   r14 : "L4D: Left 4 Dimensions",
   r15 : "5 Dimension Antimatter Punch",
