@@ -49,7 +49,7 @@ function buyTickSpeed() {
       return false;
   }
 
-  if (!canAfford(player.tickSpeedCost)) {
+  if (!canAfford(player.tickSpeedCost, 9)) {
       return false;
   }
 

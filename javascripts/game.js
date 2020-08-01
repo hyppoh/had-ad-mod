@@ -4982,15 +4982,15 @@ function gameLoop(diff) {
     for (let tier = 1; tier <= 8; ++tier) {
         var name = TIER_NAMES[tier];
         if (player.currentChallenge != "challenge10" && player.currentChallenge != "postc1") {
-            document.getElementById(name).className = canAfford(player[name + 'Cost']) ? 'storebtn' : 'unavailablebtn';
-            document.getElementById(name + 'Max').className = canAfford(player[name + 'Cost'].times(10 - dimBought(tier))) ? 'storebtn' : 'unavailablebtn';
+            document.getElementById(name).className = canAfford(player[name + 'Cost'], tier) ? 'storebtn' : 'unavailablebtn';
+            document.getElementById(name + 'Max').className = canAfford(player[name + 'Cost'].times(10 - dimBought(tier)), tier) ? 'storebtn' : 'unavailablebtn';
         } else {
             if (tier >= 3) {
                 document.getElementById(name).className = player[TIER_NAMES[tier-2] + 'Amount'].gte(player[name + 'Cost']) ? 'storebtn' : 'unavailablebtn';
                 document.getElementById(name + 'Max').className = player[TIER_NAMES[tier-2] + 'Amount'].gte(player[name + 'Cost'].times(10 - dimBought(tier))) ? 'storebtn' : 'unavailablebtn';
             } else {
-                document.getElementById(name).className = canAfford(player[name + 'Cost']) ? 'storebtn' : 'unavailablebtn';
-                document.getElementById(name + 'Max').className = canAfford(player[name + 'Cost'].times(10 - dimBought(tier))) ? 'storebtn' : 'unavailablebtn';
+                document.getElementById(name).className = canAfford(player[name + 'Cost'], tier) ? 'storebtn' : 'unavailablebtn';
+                document.getElementById(name + 'Max').className = canAfford(player[name + 'Cost'].times(10 - dimBought(tier)), tier) ? 'storebtn' : 'unavailablebtn';
             }
         }
     }
@@ -5021,7 +5021,7 @@ function gameLoop(diff) {
 
 
 
-    if (canAfford(player.tickSpeedCost)) {
+    if (canAfford(player.tickSpeedCost, 9)) {
         document.getElementById("tickSpeed").className = 'storebtn';
         document.getElementById("tickSpeedMax").className = 'storebtn';
     } else {
