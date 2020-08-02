@@ -236,35 +236,15 @@ function hasInfinityMult(tier) {
         var name = TIER_NAMES[tier];
         var cost = player[name + 'Cost'];
         auto = false;
-    
-        if (false) {
-            if (!canBuyDimension(tier)) {
-                return false;
-            }
-        } else {
-            if (tier >= 2) {
-                if (player[TIER_NAMES[tier-1] + 'Amount'].lt(cost)) return false
-            }
-            else if (!canBuyDimension(tier)) {
-                return false;
-            } else if (tier < 2 && !canAfford(cost)){
-                return false;
-            }
+        if (!canBuyDimension(tier)) {
+            return false;
+        } else if (!canAfford(cost, tier)){
+            return false;
         }
-    
-    
-    
-        if (false) {
-            if (!canAfford(cost)) {
-                return false;
-            }
-        }
-    
-    
-        if ((false) || tier < 2) {
+        if (tier < 2) {
             player.money = player.money.minus(cost);
         } else {
-            player[TIER_NAMES[tier-1] + 'Amount'] = player[TIER_NAMES[tier-1] + 'Amount'].minus(cost)
+            player[TIER_NAMES[tier-1] + 'Amount'] = player[TIER_NAMES[tier-1] + 'Amount'].minus(cost);
         }
     
         player[name + 'Amount'] = player[name + 'Amount'].plus(1);
@@ -306,7 +286,7 @@ function hasInfinityMult(tier) {
             }
             else if (!canBuyDimension(tier)) {
                 return false;
-            } else if (tier < 2 && !canAfford(cost)){
+            } else if (tier < 2 && !canAfford(cost, tier)){
                 return false;
             }
         }
@@ -314,7 +294,7 @@ function hasInfinityMult(tier) {
     
     
         if (false) {
-            if (!canAfford(cost)) {
+            if (!canAfford(cost, tier)) {
                 return false;
             }
         }
@@ -453,8 +433,12 @@ function hasInfinityMult(tier) {
 }
 
 
-function canAfford(cost) {
-    return ((cost.lt(new Decimal("1.79e308")) && !player.break) || player.break) && cost.lte(player.money);
+function canAfford(cost, dimension) {
+    if (dimension < 2 || dimension > 8) {
+        return ((cost.lt(new Decimal("1.79e308")) && !player.break) || player.break) && cost.lte(player.money);
+    } else {
+        return (player[TIER_NAMES[dimension-1] + 'Amount'].gte(cost));
+    }
 }
 
 
