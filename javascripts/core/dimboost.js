@@ -73,7 +73,7 @@ function softReset(bulk) {
       achPow: player.achPow,
     newsArray: player.newsArray,
       autobuyers: player.autobuyers,
-      costMultipliers: [new Decimal(1e3), new Decimal(1e4), new Decimal(1e5), new Decimal(1e6), new Decimal(1e8), new Decimal(1e10), new Decimal(1e12), new Decimal(1e15)],
+      costMultipliers: [new Decimal(10), new Decimal(5), new Decimal(5), new Decimal(5), new Decimal(5), new Decimal(5), new Decimal(5), new Decimal(5)],
       tickspeedMultiplier: new Decimal(10),
       chall2Pow: player.chall2Pow,
       chall3Pow: new Decimal(0.01),
