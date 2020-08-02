@@ -73,8 +73,8 @@ function softReset(bulk) {
       achPow: player.achPow,
     newsArray: player.newsArray,
       autobuyers: player.autobuyers,
-      costMultipliers: [new Decimal(1e3), new Decimal(1e4), new Decimal(1e5), new Decimal(1e6), new Decimal(1e8), new Decimal(1e10), new Decimal(1e12), new Decimal(1e15)],
-      tickspeedMultiplier: new Decimal(10),
+      costMultipliers: [new Decimal(5), new Decimal(50), new Decimal(500), new Decimal(5e3), new Decimal(5e4), new Decimal(5e5), new Decimal(5e6), new Decimal(5e7)],
+      tickspeedMultiplier: new Decimal(5),
       chall2Pow: player.chall2Pow,
       chall3Pow: new Decimal(0.01),
       matter: new Decimal(0),
@@ -160,7 +160,7 @@ function softReset(bulk) {
       player.seventhCost = new Decimal(2e5)
       player.eightCost = new Decimal(4e6)
   }
-  if (player.currentChallenge == "postc1") player.costMultipliers = [new Decimal(1e3),new Decimal(5e3),new Decimal(1e4),new Decimal(1.2e4),new Decimal(1.8e4),new Decimal(2.6e4),new Decimal(3.2e4),new Decimal(4.2e4)];
+  if (player.currentChallenge == "postc1") player.costMultipliers = [new Decimal(10), new Decimal(100), new Decimal(1e3), new Decimal(1e4), new Decimal(1e5), new Decimal(1e6), new Decimal(1e7), new Decimal(1e8)];
   if (player.resets == 1 && player.currentChallenge == "") {
       if (player.infinityUpgrades.includes("skipReset2")) player.resets++;
       if (player.infinityUpgrades.includes("skipReset3")) player.resets++;
